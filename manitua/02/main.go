@@ -6,6 +6,7 @@ import (
 	"flag"
 	"fmt"
 	"os"
+	"time"
 )
 
 var (
@@ -92,6 +93,8 @@ func main() {
 		error("could not read the file: %s", err)
 	}
 
+	start := time.Now()
+
 	guide := bytes.Split(f, []byte("\n"))
 
 	scores := [][]int{{}, {}}
@@ -113,4 +116,5 @@ func main() {
 
 	fmt.Printf("my total score (my reason): %d\n", sum(scores[0]))
 	fmt.Printf("my total score (decrypted): %d\n", sum(scores[1]))
+	fmt.Printf("\nstats:\nelapsed time: %d μs\n", time.Since(start).Microseconds())
 }

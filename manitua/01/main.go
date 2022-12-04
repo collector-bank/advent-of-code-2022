@@ -8,6 +8,7 @@ import (
 	"os"
 	"sort"
 	"strconv"
+	"time"
 )
 
 var (
@@ -38,6 +39,8 @@ func main() {
 		error("could not read the file: %s", err)
 	}
 
+	start := time.Now()
+
 	s := bytes.Split(f, []byte("\n"))
 
 	var cal int
@@ -61,4 +64,5 @@ func main() {
 
 	fmt.Printf("elf that carries most calories: %d\n", elfs[len(elfs)-1])
 	fmt.Printf("calories carried by top three elf's: %d\n", sum(elfs[len(elfs)-3:]))
+	fmt.Printf("\nstats:\nelapsed time: %d μs\n", time.Since(start).Microseconds())
 }
