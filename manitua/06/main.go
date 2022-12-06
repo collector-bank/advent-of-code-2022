@@ -2,7 +2,6 @@
 package main
 
 import (
-	"bytes"
 	"flag"
 	"fmt"
 	"os"
@@ -52,13 +51,11 @@ func main() {
 
 	start := time.Now()
 
-	r := bytes.Split(f, []byte("\n"))
-
 	var m4, m14 int
-	m4 = findMarker(r[0], 4)
-	m14 = findMarker(r[0], 14)
+	m4 = findMarker(f, 4)
+	m14 = findMarker(f, 14)
 
-	fmt.Printf("marker: %d\n", m4)
-	fmt.Printf("marker: %d\n", m14)
+	fmt.Printf("first start-of-packet marker (4 distinct characters): %d\n", m4)
+	fmt.Printf("first start-of-packet marker (14 distinct characters): %d\n", m14)
 	fmt.Printf("\nstats:\nelapsed time: %d μs\n", time.Since(start).Microseconds())
 }

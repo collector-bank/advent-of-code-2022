@@ -23,20 +23,12 @@ func fatal(format string, a ...any) {
 	os.Exit(1)
 }
 
-func convertToInt(n []byte) (int, error) {
-	i, err := strconv.Atoi(string(n))
-	if err != nil {
-		return 0, fmt.Errorf("invalid number: %s", err)
-	}
-	return i, nil
-}
-
 func arrangeRanges(ranges *[][]byte) ([]int, error) {
 	c := []int{}
 	for _, i := range *ranges {
 		rv := bytes.Split(i, []byte("-"))
 		for _, j := range rv {
-			n, err := convertToInt(j)
+			n, err := strconv.Atoi(string(j))
 			if err != nil {
 				return c, fmt.Errorf("invalid range: %s", err)
 			}
