@@ -44,4 +44,10 @@ func main() {
 	day05ans = Day05part02(day05data)
 	fmt.Printf("Day05 part02: %q\n", day05ans)
 
+	day06data := GetDayData("06")
+	day06ans := Day06part01(day06data)
+	fmt.Printf("Day06 part01: %d\n", day06ans)
+	day06ans = Day06part02(day06data)
+	fmt.Printf("Day06 part02: %d\n", day06ans)
+
 }
